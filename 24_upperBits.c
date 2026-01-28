@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* 
+/*
  * upperBits - pads n upper bits with 1's
  *  You may assume 0 <= n <= 32
  *  Example: upperBits(4) = 0xF0000000
@@ -10,7 +10,7 @@
  */
 int upperBits(int n)
 {
-    return 2;
+    return ((!!n << 31) >> 31) & (1 << 31) >> (n + ~0);
 }
 
 int test_upperBits(int x)
@@ -24,7 +24,7 @@ int test_upperBits(int x)
 
 int main(void)
 {
-    int x = 32;
+    int x = 31;
     printf("expected: %x\n", upperBits(x));
     printf("actual  : %x\n", test_upperBits(x));
 }
